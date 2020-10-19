@@ -103,12 +103,22 @@
         # load into RDS
         LOAD DATA LOCAL INFILE '~/order_products.csv' INTO TABLE order_products FIELDS TERMINATED BY ',' ENCLOSED BY '"' IGNORE 1 LINES;
         ```
+
 ## 在 AWS 上，S3 数据桶上的数据导入 RedShift 数据仓库
 
 1. 新建一个免费的 `RedShift` CLUSTERS（依照 AWS 的文档配置就好）
 
 2. [Tutorial: Loading data from Amazon S3](https://docs.aws.amazon.com/redshift/latest/dg/tutorial-loading-data.html)
 > 数据在 `./S3toRedShift` 里
+
+例子：
+```sql
+copy abc_retail.raws from 's3://abcretailforcs527/load/ABC_Retail' 
+credentials 'aws_access_key_id=AKIA3VE67DXXXXXXXXXX;aws_secret_access_key=+SBaSp2Weix8GLELHJOLBnlTIRNXcnXXXXXXXXXX' 
+delimiter ','
+DATEFORMAT 'YYYY-MM-DD HH24:MI:SS'
+csv;
+```
 
 ## Flask 程序在 `ec 2 instance` 服务器上的部署
 

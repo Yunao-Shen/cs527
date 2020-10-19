@@ -2,8 +2,9 @@ import psycopg2
 from time import time
 
 class connect_redshift():
-    def __init__(self, host, dbname, user, password, port):
-        self.db = psycopg2.connect(host=host, dbname=dbname, port=port, user=user, password=password)
+    def __init__(self, host, dbname, user, password, port, options):
+        self.db = psycopg2.connect(
+            host=host, dbname=dbname, port=port, user=user, password=password, options=options)
         self.cursor = self.db.cursor()
 
     def make_query(self, query):

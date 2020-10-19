@@ -50,11 +50,12 @@ def queryRedshift():
     # return render_template('index.html', query=raw_query)
     q = buildQueryFromInput(raw_query)
 
-    connection = connect_redshift(host='cs527project1group5-redshift.cj3ezfweedz4.us-east-1.redshift.amazonaws.com',
+    connection = connect_redshift(host='cs527project1group5.cj3ezfweedz4.us-east-1.redshift.amazonaws.com',
                                user='admin',
                                password='CS527project1',
                                dbname='instacart',
-                               port='5439')
+                               port='5439',
+                               options='-c search_path={schema}'.format(schema=db_table))
     try:
         col_name, res, query_time = connection.make_query(q)
     except Exception as e:
