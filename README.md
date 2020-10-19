@@ -65,10 +65,10 @@
         # 示例
         # connect ec 2
         chmod 400 ~/Downloads/CS527EC2iOS.pem
-        ssh -i "~/Downloads/CS527EC2iOS.pem" ec2-user@ec2-3-84-5-152.compute-1.amazonaws.com
+        ssh -i "~/Downloads/CS527EC2iOS.pem"  ec2-user@ec2-18-211-73-183.compute-1.amazonaws.com 
 
         # transfer files
-        scp -i "~/Downloads/CS527EC2iOS.pem" ~/Downloads/products.csv ec2-user@ec2-3-84-5-152.compute-1.amazonaws.com:~
+        scp -i "~/Downloads/CS527EC2iOS.pem" ~/Downloads/products.csv  ec2-user@ec2-18-211-73-183.compute-1.amazonaws.com :~
         ```
 
     3. 在 `ec 2 instance` 上安装并启动 **MySQL 客户端**:
@@ -81,7 +81,8 @@
         sudo service mysqld start
 
         # login into RDS
-        mysql -u admin -p cs527project1 -h cs527project1group5.cnpt9dsbfddc.us-east-1.rds.amazonaws.com
+        mysql -u admin -p instacart -h cs527project1group5.cnpt9dsbfddc.us-east-1.rds.amazonaws.com
+        mysql -u admin -p abc_retail -h cs527project1group5.cnpt9dsbfddc.us-east-1.rds.amazonaws.com
         ```
 
     4. 在 `ec 2 instance` 上的 **MySQL 客户端** 创建表并上传 `.csv` 数据:
